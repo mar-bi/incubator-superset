@@ -46,6 +46,7 @@ from superset.constants import RouteMethod
 from superset.errors import ErrorLevel, SupersetError, SupersetErrorType
 from superset.exceptions import SupersetSecurityException
 from superset.utils.core import DatasourceName
+from superset.custom_views.views import CustomAuthDBView
 
 if TYPE_CHECKING:
     from superset.common.query_context import QueryContext
@@ -101,6 +102,9 @@ RoleModelView.related_views = []
 
 
 class SupersetSecurityManager(SecurityManager):
+    # override authdbview which is coming from BaseSecurityManager superclass
+    # with our CustomAuthDBView  
+    authdbview = CustomAuthDBView
     userstatschartview = None
     READ_ONLY_MODEL_VIEWS = {"DatabaseAsync", "DatabaseView", "DruidClusterModelView"}
 
