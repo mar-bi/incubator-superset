@@ -5,7 +5,6 @@
 1. add a JWT login in order to show charts and metrics via embedded iframes in another (non-superset) client app.
 2. login to superset from the client app with a single **'GET'** request which contains a JWT token as a url string parameter. Sending `csrf_token` and `cookies` is not required.
 3. keep original superset login with username & password.
-4. potentially solve **Safari** browser's default behavior for NOT sending cookies in **CORS** requests. (_still need to verify_).
 
 ## Implementation details
 
