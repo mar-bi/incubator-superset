@@ -24,10 +24,12 @@ import sequentialCommon from '@superset-ui/color/esm/colorSchemes/sequential/com
 import sequentialD3 from '@superset-ui/color/esm/colorSchemes/sequential/d3';
 import { getCategoricalSchemeRegistry, getSequentialSchemeRegistry } from '@superset-ui/color';
 
+import customPallets from '../customColors/index';
+
 export default function setupColors() {
   // Register color schemes
   const categoricalSchemeRegistry = getCategoricalSchemeRegistry();
-  [airbnb, categoricalD3, google, lyft].forEach((group) => {
+  [airbnb, categoricalD3, google, lyft, customPallets].forEach((group) => {
     group.forEach((scheme) => {
       categoricalSchemeRegistry.registerValue(scheme.id, scheme);
     });
