@@ -5,7 +5,6 @@
 1. add a JWT login in order to show charts and metrics via embedded iframes in another (non-superset) client app.
 2. login to superset from the client app with a single **'GET'** request which contains a JWT token as a url string parameter. Sending `csrf_token` and `cookies` is not required.
 3. keep original superset login with username & password.
-4. potentially solve **Safari** browser's default behavior for NOT sending cookies in **CORS** requests. (_still need to verify_).
 
 ## Implementation details
 
@@ -36,3 +35,20 @@ CORS_OPTIONS = {
 ## Credits
 
 I used this article to implement the JWT login to superset - [Tutorial - How to integrate superset in your own application](https://programmer.group/tutorial-how-to-integrate-superset-in-your-own-application.html)
+
+---
+
+## Dmates modification to ss frontend
+
+Branch - `dmates-ss-frontend-0.35.2`  
+App version: 0.35.2
+
+1. Added support for custom color schemes
+
+### To add a new color scheme:
+
+1. Go to `./superset/assets/`
+2. Run `npm install`
+3. Modify `./superset/assets/src/customColors/index.js`
+4. Create production build with `yarn prod`
+5. Copy `./superset/assets/dist/` to server folder `superset/static/assets/dist/`. Replace the old `dist` folder on the server if necessary.
