@@ -27,10 +27,12 @@ import {
   getSequentialSchemeRegistry,
 } from '@superset-ui/color';
 
+import customSchemes from '../customColorSchemes';
+
 export default function setupColors() {
   // Register color schemes
   const categoricalSchemeRegistry = getCategoricalSchemeRegistry();
-  [airbnb, categoricalD3, google, lyft].forEach(group => {
+  [airbnb, categoricalD3, google, lyft, customSchemes].forEach(group => {
     group.forEach(scheme => {
       categoricalSchemeRegistry.registerValue(scheme.id, scheme);
     });

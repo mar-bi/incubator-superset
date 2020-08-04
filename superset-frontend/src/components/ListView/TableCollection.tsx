@@ -18,7 +18,7 @@
  */
 import React from 'react';
 import cx from 'classnames';
-import { TableInstance } from 'react-table';
+import { TableInstance, HeaderGroup, Cell } from 'react-table';
 
 interface Props {
   getTableProps: (userProps?: any) => any;
@@ -28,6 +28,23 @@ interface Props {
   rows: TableInstance['rows'];
   loading: boolean;
 }
+// custom types added
+type HeaderColumn = HeaderGroup<{}> & {
+  accessor: string;
+  hidden: boolean;
+  Cell?: ({
+    row: {
+      original: { viz_type: vizType },
+    },
+  }: any) => any;
+  Header?: string;
+  sortable?: boolean;
+  id?: string;
+};
+type CustomCell = Cell<{}, any> & {
+  column?: { hidden?: boolean; cellProps?: any };
+};
+
 export default function TableCollection({
   getTableProps,
   getTableBodyProps,
@@ -41,7 +58,7 @@ export default function TableCollection({
       <thead>
         {headerGroups.map(headerGroup => (
           <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map(column =>
+            {headerGroup.headers.map((column: HeaderColumn) =>
               column.hidden ? null : (
                 <th
                   {...column.getHeaderProps(
@@ -81,7 +98,7 @@ export default function TableCollection({
                 row.setState && row.setState({ hover: false })
               }
             >
-              {row.cells.map(cell => {
+              {row.cells.map((cell: CustomCell) => {
                 if (cell.column.hidden) return null;
 
                 const columnCellProps = cell.column.cellProps || {};
