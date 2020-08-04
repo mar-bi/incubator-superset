@@ -40,8 +40,11 @@ I used this article to implement the JWT login to superset - [Tutorial - How to 
 
 ## Dmates modification to ss frontend
 
-Branch - `dmates-ss-frontend-0.35.2`  
-App version: 0.35.2
+- Current version:  
+  Branch - `master`, `jwt-login`
+
+- App version: 0.35.2  
+  Branch - `dmates-ss-frontend-0.35.2`
 
 1. Added support for custom color schemes
 
